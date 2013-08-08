@@ -1,4 +1,13 @@
 
+var winston = require('winston');
+var logger = new (winston.Logger)({
+       transports: [
+         new (winston.transports.File)({ filename: 'logs/scheduler-activity.log', timestamp: function () {
+          return new Date().toString();
+        }})
+       ]
+});
+
 var FFI = require("ffi");
 
 var RTLD_NOW = FFI.DynamicLibrary.FLAGS.RTLD_NOW;
@@ -19,3 +28,4 @@ if (process.argv.length != 3) {
 
 ospi.ospi_init();
 ospi.ospi_open_shut(process.argv[2]);
+logger.info('open_shut','Script called...with value '+process.argv[2]);

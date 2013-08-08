@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+var ospi = require('../lib/ospi');
+var program = require('commander');
+
+function list(val) {
+  return val.split(',');
+}
+
+program
+  .version('0.0.1')
+  .option('-o, --open <stations>', 'List of stations to open', list)
+  .option('-s, --shut [stations]', 'List of stations to open. Defaults to shut all stations.', list)
+  .parse(process.argv);
+
+if (!program.args.length) program.help();
