@@ -25,7 +25,7 @@
     "underscore": ">= 1.4.4"
   },
   "scripts": {
-    "install" : "sh build.sh"
+    "postinstall" : "sh build.sh"
   }
   "license": "MIT"
 }
