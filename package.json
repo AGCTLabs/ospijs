@@ -1,8 +1,7 @@
 {
-  "name": "OpenSprinklerJS",
+  "name": "ospi",
   "description" : "JavaScript binding for Raspberry Pi based Open Sprinkler",
   "version": "0.0.1",
-  "private": true,
   "main": "lib/ospi",
   "keywords": [
    "OpenSprinkler",
@@ -24,5 +23,6 @@
     "commander": "*",
     "winston": "*",
     "underscore": ">= 1.4.4"
-  }
+  },
+  "install" : "sh build.sh"
 }
