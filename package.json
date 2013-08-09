@@ -27,6 +27,5 @@
   "scripts": {
     "install" : "sh build.sh"
   }
-  "license": "MIT",
-  "gypfile": true
+  "license": "MIT"
 }
