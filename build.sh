@@ -1,7 +1,5 @@
-npm install
-
 rm -rf lib/libospi.so lib/libospi.so.1.0.1 build
-mkdir build
+mkdir build logs
 
 gcc -fPIC -g -c -Wall src/ospijs.c  -o build/ospijs.o
 gcc -shared -Wl,-soname,libospi.so -o libospi.so.1.0.1 build/ospijs.o -lc
