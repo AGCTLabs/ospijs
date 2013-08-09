@@ -1,8 +1,9 @@
 {
   "name": "OpenSprinklerJS",
-  "description" : "Javascript binding for Raspberry Pi based Open Sprinkler",
+  "description" : "JavaScript binding for Raspberry Pi based Open Sprinkler",
   "version": "0.0.1",
   "private": true,
+  "main": "lib/ospi",
   "keywords": [
    "OpenSprinkler",
    "WiringPi",
@@ -14,7 +15,8 @@
      "email": "agctlabs@gmail.com"
   },
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/AGCTLabs/ospijs.git"
   },
   "dependencies": {
     "ref": ">= 0.1.3",
