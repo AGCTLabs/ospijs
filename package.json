@@ -24,5 +24,9 @@
     "winston": "*",
     "underscore": ">= 1.4.4"
   },
-  "install" : "sh build.sh"
+  "scripts": {
+    "install" : "sh build.sh"
+  }
+  "license": "MIT",
+  "gypfile": true
 }
