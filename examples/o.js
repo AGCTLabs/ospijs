@@ -31,7 +31,7 @@ rl.on('line', function (cmd) {
      if (input[0] === 'on') {
        ospi.on(station);
      } else if(input[0] === 'off')  {
-       ospi.off(station);
+       ospi.control({shutAll:true});
      } else {
        console.log('command not recognized');
      }

@@ -6,6 +6,9 @@
 var ospi = require('../lib/ospi');
 var program = require('commander');
 
+/**
+ * CLI
+ */ 
 function list(val) {
   return val.split(',');
 }
@@ -16,4 +19,17 @@ program
   .option('-s, --shut [stations]', 'List of stations to open. Defaults to shut all stations.', list)
   .parse(process.argv);
 
-if (!program.args.length) program.help();
+if (!program.open && !program.shut) program.help();
+
+var option = {};
+if (program.open)
+  option.open = program.open;
+
+if (typeof program.shut === 'boolean' && program.shut) {
+  option.shutAll = true;
+} else if (typeof program.shut === 'object') {
+  option.shut = program.shut;
+}
+
+ospi.control(option);
+
