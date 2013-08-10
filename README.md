@@ -59,29 +59,101 @@ Node.js is the JavaScript runtime environment built on Google Chrome's JavaScrip
 Easiest way to install Node.js on your raspberry pi is to download the pre-build binaries for ARM distribution. Pick a latest version for which ARM distribution is available at http://nodejs.org/dist. For example 
 
 ``` bash
-cd /opt
+cd $HOME
+# you might want to get a latest version.
 wget http://nodejs.org/dist/v0.10.13/node-v0.10.13-linux-arm-pi.tar.gz
 tar zxf node-v0.10.13-linux-arm-pi.tar.gz
-ln -s node-v0.10.13-linux-arm-pi node
+# setup a symlink to this version. makes it easy to have multiple versions
+ln -s $HOME/node-v0.10.13-linux-arm-pi node
 # Setup the PATH
-PATH=/opt/node/bin:${PATH}
+PATH=$HOME/node/bin:${PATH}
 export PATH
 ```
 This should get you node and npm. Npm is node's package manager.
 
 Hardware interface functionality is typically available only to root user. So to make it easy you can add symlinks for node in /bin
 ``` bash
-sudo ln -s /opt/node/bin/node /bin/node
-sudo ln -s /opt/node/bin/npm /bin/npm
+sudo ln -s $HOME/node/bin/node /bin/node
+sudo ln -s $HOME/node/bin/npm  /bin/npm
 ```
 
 #### Installation
+Now that we have all our pre-reqs met it is fairly straigforward to install ospijs. To install just do
+``` bash
+npm install -g ospi
+```
+This would install ospijs under $HOME/node/ folder. I.e  -g option would install ospijs globally for all node projects. Alternatively you could just install it into a specific folder without -g option.
 
-
-#### Examples 
-
+To enable root access you could create a symlink
+``` bash
+sudo ln -s $HOME/node/bin/ospi /bin/ospi
+```
 
 #### Usage
+To invoke ospi you must have root access. 
 
+``` bash
+sudo ospi
 
+  Usage: ospi [options]
 
+  Options:
+
+    -h, --help             output usage information
+    -V, --version          output the version number
+    -o, --open <stations>  List of stations to open
+    -s, --shut [stations]  List of stations to open. Defaults to shut all stations.
+```
+to open valves 6,5 
+``` bash
+sudo ospi --open 6,5
+```
+
+to shut off all the values
+``` bash
+sudo opsi --shut
+```
+
+With these two basic commands you could easily set a cronjob. For example 
+``` bash
+0     5    *   *   *     /bin/ospi --open 6
+10    5    *   *   *     /bin/ospi --shut
+12    6    *   *   *     /bin/ospi --open 3
+16    6    *   *   *     /bin/ospi --shut
+20    6    *   *   *     /bin/ospi --open 5
+23    6    *   *   *     /bin/ospi --shut
+30    6    *   *   *     /bin/ospi --open 4
+33    6    *   *   *     /bin/ospi --shut
+40    6    *   *   *     /bin/ospi --open 7
+43    6    *   *   *     /bin/ospi --shut
+```
+In the above a cron job would open valve 6 at 5 AM and shut it off at 5.10 AM every dat. It should be fairly easy to write a wrapper script that could fetch the current condition and conditinally call ospi to open the valve based on weather factors.
+
+On the otherhand if you would like to control the valves using your node app then you can use the ospi service apis. To do that you need specify a dependency on ospi in your package.json and then install the node modules. This will initialzie the ospi module
+``` bash
+var ospi = require('ospi');
+```
+
+to open 
+``` bash
+ospi.open(6); // will open station 6
+```
+
+to shut
+``` bash
+ospi.shut(6);
+```
+
+to open and shut
+``` bash
+ospi.control({"open": [1,2,3], "close": [4,5]});
+```
+
+to shut all valves
+``` bash
+ospi.shut();
+```
+or 
+``` bash
+ospi.control({shutAll:true});
+```
