@@ -9,7 +9,7 @@ If you have a sprinkler system, chances are you do since you are looking at this
 Ray from http://rayshobby.net created an extenstion board for Raspberry Pi that allows interaction with your irrigation system valves. Check out [Ray's website](http://rayshobby.net) for more.
 
 #### Pre-Requisite
-Assuming you already have a raspberry pi based iggrigation system setup and now you would like to control the valves using a command line tool (i.e to open or shut the valves) or use java scripot interface from your application to control the valves, you need few things set up first your Raspberry Pi before we begin
+Assuming you already have a raspberry pi based irrigation system setup and now you would like to control their valves using a command line tool (i.e to open or shut the valves) or use java script interface from your application to control the valves, you need few things set up first on your Raspberry Pi before we begin
 
 1. GIT
 2. WiringPi 
