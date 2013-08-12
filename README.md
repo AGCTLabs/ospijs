@@ -4,7 +4,7 @@ Java Script Service and Command line Interface for Raspberry Pi based Open Sprin
 
 
 #### Open Sprikler Pi
-If you have a sprinkler system, chances are you do since you are looking at this. wouldn't it be cool if you could control your sprinkler wall through a remoate device like, laptop, phone or a tablet ?. Yes thats exactly what Open Sprikler Pi enables. Raspberry Pi is bacially a computer (FYI $35) with GPIO. For more on Raspberry Pi check here.
+If you have a sprinkler system, chances are you do since you are looking at this. wouldn't it be cool if you could control your sprinkler valve through a remoate device like, laptop, phone or a tablet ?. Yes thats exactly what Open Sprikler Pi enables. Raspberry Pi is bacially a computer (Its just $35. Can you believe that ?) with GPIO. For more on Raspberry Pi check [here](http://www.raspberrypi.org/quick-start-guide).
 
 Ray from http://rayshobby.net created an extenstion board for Raspberry Pi that allows interaction with your irrigation system valves. Check out [Ray's website](http://rayshobby.net) for more.
 
